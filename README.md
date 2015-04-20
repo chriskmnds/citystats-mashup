@@ -10,3 +10,6 @@ The project is currently under development, needs a lot of code clean-up, but al
 
 ### Screenshots
 
+![alt tag](./img/05.55.17.png)
+
+Background map image from Google Maps.
