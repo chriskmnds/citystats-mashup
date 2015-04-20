@@ -10,7 +10,7 @@ The project is currently under development, needs code clean-up and extensions, 
 
 ### Screenshots
 
-Adding/grouping nodes:
+Adding and grouping nodes/cities:
 
 ![alt tag](./img/05.55.17.png)
 
