@@ -1,0 +1,261 @@
+<div>
+	<style>
+		
+		#statsDetails .statsTable {
+			background-color:hsl(228, 24%, 96%);/* === #f2f3f7 */
+			/*border: 1px solid #ececec;*/
+			border-bottom:none;
+			height:300px;
+			overflow:scroll;		
+		}
+		
+		#statsDetails .statsTable.empty {
+			opacity:0.6;
+		}		
+		
+		#statsDetails .statsTable.full {
+			opacity:1;
+		}
+		
+		#statsDetails .statsTable .column {
+			float:left;
+		}
+		
+		#statsDetails .statsTable .column.first {
+			/*width:150px;*/
+			width:30%; /*15%;*/
+		}
+		
+		#statsDetails .statsTable .column.second, 
+		#statsDetails .statsTable .column.third  {
+			/*width:200px;*/
+			width:35%;/*17.5%;*/
+		}
+		
+		#statsDetails .statsTable .column .tBody ul {
+			margin:0;
+			padding:0;
+			list-style-type: none;
+		}
+		
+		#statsDetails .statsTable .tHead {
+			/*color: #626b73;*//*hsl(270, 2%, 25%);*/ /* hsl(210, 14%, 69%);*/
+			font-size: 1.1em;
+			padding:10px 15px;
+			border-right:1px solid #ececec;
+			border-bottom:1px solid hsl(0, 0%, 87%);
+		}
+		
+		#statsDetails .statsTable .tHead .tHeadTitle {
+			/*font-weight:bold;*/
+		}
+		
+		#statsDetails .statsTable .tBody .group,
+		#statsDetails .statsTable .tBody .language,
+		#statsDetails .statsTable .tBody .nationality {
+			border-bottom: 1px solid hsl(0, 0%, 87%);
+			background-color:hsl(228, 24%, 96%);
+			/*color:#626b73;*//*#686869*/
+		}
+		
+		#statsDetails .statsTable .tBody .language,
+		#statsDetails .statsTable .tBody .nationality,
+		#statsDetails .statsTable .tBody .group li>div {
+			border-right: 1px solid hsl(0, 0%, 87%);			
+			padding:10px;
+			padding-left:15px;
+		}
+		
+		#statsDetails .statsTable .tBody .group .selected {
+			background-color:white;
+			border-right:none;
+		}
+		
+		
+		/*
+		.animate.ng-enter {
+			-webkit-transition: opacity linear 1s;
+			transition: opacity linear 1s;
+			opacity:0;
+			color:red;
+		}
+		
+		.animate.ng-enter.ng-enter-active {
+			opacity:1;
+			color:yellow;
+		}
+		*/
+		
+		
+		
+		#statsDetails .statsTable .tBody .group:hover {
+			cursor:pointer;
+			background-color:white;
+			/*  transitions should be set to setup class (above) 
+				but this gives a nicer effect
+			*/
+			-webkit-transition: all linear 0.3s;
+			transition: all linear 0.3s;
+		}
+		
+		#statsDetails .statsTable .tBody .nationality {
+			border-right:none;
+		}
+				
+		#statsDetails .statsTable .tBody .language,
+		#statsDetails .statsTable .tBody .nationality {
+			background-color:white;
+		}
+		
+		#statsDetails .statsTable .tBody .name,
+		#statsDetails .statsTable .tBody .value {
+			/*font-size: 1.1em;*/
+			color: hsl(210, 14%, 69%);
+		}
+		
+		#statsDetails .statsTable .tBody .name {
+			/*font-weight:bold;*/
+			color:hsl(84, 35%, 55%);
+		}
+		
+		#statsDetails .statsTable .tBody .value {
+			color: hsl(210, 14%, 69%);
+		}
+		
+		#statsDetails .statsTable .entitySymbol {
+			float:right;
+			font-size:0.8em;
+			line-height: 1.7em;
+		}
+		
+		#statsDetails .statsTable .sortSymbol {
+			padding-left:5px;
+			font-size:0.5em;
+			font-weight:normal;
+			color: hsl(210, 14%, 69%);
+		}
+
+		#statsDetails .statsTable.full .pad,
+		#statsDetails .statsTable.empty .pad {
+			border-bottom:1px solid hsl(0, 0%, 87%);
+			height:10px;
+		}
+		
+		#statsDetails .statsTable.empty .pad {
+			background-color:hsl(210, 14%, 69%);
+		}
+		
+		#statsDetails .statsTable.full .pad {
+			background-color:#BCE27F;
+		}
+		
+		#statsDetails .statsTable.full .pad.extra {
+			background-color:hsl(0, 0%, 87%);
+			display:none;
+		}
+		
+		
+	</style>
+	
+	<div ng-switch on="modelLookup.groupsActive.groups.length">
+	
+		<div class="statsTable empty" ng-switch-when="0">
+			<div class="column first">
+				<div class="tHead">
+					<span class="glyphicon glyphicon-stats"></span><span>&nbsp;</span>
+				</div>
+				<div class="pad"></div>
+			</div>
+			<div class="column second">
+				<div class="tHead">
+					<span class="tHeadSymbol"></span><span class="tHeadTitle">Languages</span>
+				</div>
+				<div class="pad"></div>
+			</div>
+			<div class="column third">
+				<div class="tHead">
+					<span class="tHeadSymbol"></span><span class="tHeadTitle">Nationalities</span>
+				</div>
+				<div class="pad"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	
+	
+	
+		<div class="statsTable full" ng-switch-default>
+		
+			<div class="column first">
+				<div class="tHead">
+					<span class="glyphicon glyphicon-stats"></span><span>&nbsp;</span>
+				</div>
+				<div class="pad"></div>
+				<div class="tBody">
+					<ul ng-repeat="group in modelLookup.groupsActive.groups track by $index" class="group animate">
+						<li ng-click="statsGroupClicked(group.id)">
+							<div ng-if="group.id === statsGroupSelected.id" class="selected">
+								<span class="glyphicon glyphicon-play entitySymbol"></span>
+								<span ng-repeat="entity in group.entities" style="float:left">
+									<span ng-if="$first">{{dataLookup.citiesIndex[entity.id].name}}</span>
+									<span ng-if="$middle">, {{dataLookup.citiesIndex[entity.id].name}}</span>
+									<span ng-if="$last && $index > 0">, {{dataLookup.citiesIndex[entity.id].name}}</span>
+								</span>
+								<div style="clear:left;"></div>
+							</div>
+							<div ng-if="group.id !== statsGroupSelected.id">
+								<span ng-repeat="entity in group.entities" style="float:left">
+									<span ng-if="$first">{{dataLookup.citiesIndex[entity.id].name}}</span>
+									<span ng-if="$middle">, {{dataLookup.citiesIndex[entity.id].name}}</span>
+									<span ng-if="$last && $index > 0">, {{dataLookup.citiesIndex[entity.id].name}}</span>
+								</span>
+								<div style="clear:left;"></div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="pad extra"></div>
+			</div>
+		
+			<div class="column second">
+				<div class="tHead">
+					<span class="tHeadSymbol"></span><span class="tHeadTitle">Languages</span><span class="sortSymbol glyphicon glyphicon-triangle-bottom"></span>
+				</div>
+				<div class="pad"></div>
+				<div class="tBody">
+					<ul ng-if="modelLookup.groupsActive.find(statsGroupSelected.id) !== null">
+						<li ng-repeat="language in groupLanguages">
+							<div class="language">
+								<div class="name">{{language.name | capitalize:true}}</div>
+								<div class="value">{{language.value | number:0}}</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		
+			<div class="column third">
+				<div class="tHead">
+					<span class="tHeadSymbol"></span><span class="tHeadTitle">Nationalities</span><span class="sortSymbol glyphicon glyphicon-triangle-bottom"></span>
+				</div>
+				<div class="pad"></div>
+				<div class="tBody">
+					<ul ng-if="modelLookup.groupsActive.find(statsGroupSelected.id) !== null">
+						<li ng-repeat="nationality in groupNationalities">
+							<div class="nationality">
+								<div class="name">{{nationality.name | capitalize:true}}</div>
+								<div class="value">{{nationality.value | number:0}}</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		
+			<div class="clear"></div>			
+		
+		</div>
+	
+	
+	
+	</div>
+	
+</div>
