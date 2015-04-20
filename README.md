@@ -1,4 +1,4 @@
-# Open-City-Stats
+# Open City Stats
 
 Open Data visualisation built in Angular and D3.js.
 
