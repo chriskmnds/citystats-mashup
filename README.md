@@ -10,6 +10,12 @@ The project is currently under development, needs code clean-up and extensions, 
 
 ### Screenshots
 
+Adding/grouping nodes:
+
 ![alt tag](./img/05.55.17.png)
+
+Start-up state of the application:
+
+![alt tag](./img/05.55.47.png)
 
 Background map image from Google Maps.
