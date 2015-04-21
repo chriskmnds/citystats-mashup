@@ -1,7 +1,5 @@
 # Open City Stats mashup
 
-This is the source code for the Open City Stats application, an Open Data visualisation built in Angular and D3.js.
-
 Project URL (to be available soon).
 
 ## About
