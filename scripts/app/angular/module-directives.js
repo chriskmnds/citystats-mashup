@@ -23,6 +23,7 @@ angular.module('CustomFilter', []).
     }
   });
 
+// Main application module. Inherits app.init
 var app = angular.module('app.main', ['app.init', 'CustomFilter', 'ngAnimate'])
 	.run(function(meta, $http) {
 		// Initialisation code
