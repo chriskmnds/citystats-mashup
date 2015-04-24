@@ -123,9 +123,9 @@ body {
 	color:hsl(341, 72%, 61%);
 	border: 1px solid silver;
 	-webkit-border-radius: 30px;
-	   -moz-border-radius: 30px;
+	   /*-moz-border-radius: 30px;
 	    -ms-border-radius: 30px;
-		 -o-border-radius: 30px;
+		 -o-border-radius: 30px;*/
 		 	border-radius: 30px;
 	/*-webkit-animation: pulse 0.6s infinite alternate;
 	animation: pulse 0.6s infinite alternate;*/
@@ -164,9 +164,6 @@ body {
 
 #stats {
 	-webkit-transition: opacity 0.3s linear;
-       -moz-transition: opacity 0.3s linear;
-        -ms-transition: opacity 0.3s linear;
-         -o-transition: opacity 0.3s linear;
             transition: opacity 0.3s linear;
 }
 
@@ -203,24 +200,15 @@ body {
 #statsChartLabel {
 	/* opacity */
 	-webkit-transition: opacity linear 0.3s, -webkit-transform 0.3s;
-	   -moz-transition: opacity linear 0.3s, -moz-transform 0.3s;
-	    -ms-transition: opacity linear 0.3s, -ms-transform 0.3s;
-		 -o-transition: opacity linear 0.3s, -o-transform 0.3s;
 		 	transition: opacity linear 0.3s, transform 0.3s;
 	/* set initial position on ng-show */
 	-webkit-transform: translate3d(0,0,0) rotate3d(0,0,0,0);
-	   -moz-transform: translate3d(0,0,0) rotate3d(0,0,0,0);
-		-ms-transform: translate3d(0,0,0) rotate3d(0,0,0,0);
-		 -o-transform: translate3d(0,0,0) rotate3d(0,0,0,0);
 			transform: translate3d(0,0,0) rotate3d(0,0,0,0);
 }
 
 #statsChartLabel.ng-hide {
 	opacity:0;
 	-webkit-transform: translate3d(0,10px,0) rotate3d(1,1,0,25deg);
-	   -moz-transform: translate3d(0,10px,0) rotate3d(1,1,0,25deg);
-		-ms-transform: translate3d(0,10px,0) rotate3d(1,1,0,25deg);
-		 -o-transform: translate3d(0,10px,0) rotate3d(1,1,0,25deg);
 			transform: translate3d(0,10px,0) rotate3d(1,1,0,25deg);
 }
 
@@ -286,15 +274,9 @@ body {
 #toolsSelect, #toolsNode, #toolsInit {
 	/* opacity */
 	-webkit-transition: opacity linear 0.3s, -webkit-transform 0.3s;
-	   -moz-transition: opacity linear 0.3s, -moz-transform 0.3s;
-	    -ms-transition: opacity linear 0.3s, -ms-transform 0.3s;
-		 -o-transition: opacity linear 0.3s, -o-transform 0.3s;
 		 	transition: opacity linear 0.3s, transform 0.3s;
 	/* set initial position on ng-show */
 	-webkit-transform: translate3d(0,0,0) rotate3d(0,0,0,0);
-	   -moz-transform: translate3d(0,0,0) rotate3d(0,0,0,0);
-		-ms-transform: translate3d(0,0,0) rotate3d(0,0,0,0);
-		 -o-transform: translate3d(0,0,0) rotate3d(0,0,0,0);
 			transform: translate3d(0,0,0) rotate3d(0,0,0,0);
 }
 
@@ -307,23 +289,14 @@ body {
 #toolsInit.ng-hide {
 	opacity:0;
 	-webkit-transform-origin: -2em 50%;
-	   -moz-transform-origin: -2em 50%;
-	    -ms-transform-origin: -2em 50%;
-		 -o-transform-origin: -2em 50%;
 			transform-origin: -2em 50%;
 	-webkit-transform: translate3d(0,0,0) rotate3d(1,1,1,30deg);
-	   -moz-transform: translate3d(0,0,0) rotate3d(1,1,1,30deg);
-	    -ms-transform: translate3d(0,0,0) rotate3d(1,1,1,30deg);
-		 -o-transform: translate3d(0,0,0) rotate3d(1,1,1,30deg);
 			transform: translate3d(0,0,0) rotate3d(1,1,1,30deg);
 }
 
 #toolsSelect.ng-hide, #toolsNode.ng-hide {
 	opacity:0;
 	-webkit-transform: translate3d(0,10px,0) rotate3d(1,1,0,25deg);
-	   -moz-transform: translate3d(0,10px,0) rotate3d(1,1,0,25deg);
-	   	-ms-transform: translate3d(0,10px,0) rotate3d(1,1,0,25deg);
-	   	 -o-transform: translate3d(0,10px,0) rotate3d(1,1,0,25deg);
 	   		transform: translate3d(0,10px,0) rotate3d(1,1,0,25deg);
 }
 
