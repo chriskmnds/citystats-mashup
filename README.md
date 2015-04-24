@@ -1,4 +1,4 @@
-# Open City Stats mashup
+# City Stats mashup
 
 Project URL (to be available soon).
 
