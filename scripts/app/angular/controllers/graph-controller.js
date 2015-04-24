@@ -1,9 +1,17 @@
+// Graph controller that holds tools needed by the force layout graph only.
+
 app.controller('graph', ['$scope', 'srv', 'workgroup', '$timeout', function($scope, srv, workgroup, $timeout) {
 	
 	// Set a context for the graph (used for clicking/coloring nodes)
 	ForceGraph.prototype.context = $scope;
 	
+	// Variable to hold the ID of the selected city/entity
 	$scope.entitySelected = null;
+	
+	// -------------------------------------------------------------------
+	// Some variables to open/close the widgets for controlling the graph
+	// This needs to be reworked...
+	// -------------------------------------------------------------------
 	
 	$scope.tooltipTools = {
 		init: false,
@@ -30,6 +38,9 @@ app.controller('graph', ['$scope', 'srv', 'workgroup', '$timeout', function($sco
 	$scope.loadInit = function() {
 		$timeout(function() { $scope.tooltipTools.init = true; }, 700);
 	}
+	
+	// -------------------------------------------------------------------
+	
 		
 	// Check if passed entity's ID is different from selected entity's ID
 	$scope.differentIDs = function(entity) {
@@ -64,6 +75,8 @@ app.controller('graph', ['$scope', 'srv', 'workgroup', '$timeout', function($sco
 			}
 		}
 	}
+	
+	// Everything from here on use the workgroup models for adding/removing/grouping nodes
 	
 	$scope.addNode = function(entityID) {
 	

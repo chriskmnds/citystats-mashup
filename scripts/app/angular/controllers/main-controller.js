@@ -1,3 +1,5 @@
+// Main controller that holds page-wide needed variables/methods/etc.
+
 app.controller('main', ['$scope', '$http', 'meta', 'srv', 'workgroup', '$window', '$document', function($scope, $http, meta, srv, workgroup, $window, $document) {
 	
 	// Set the metadata available in scope
@@ -8,11 +10,11 @@ app.controller('main', ['$scope', '$http', 'meta', 'srv', 'workgroup', '$window'
 	// Data lookups for use in views that require the scope
 	// plus an additional citiesIndex lookup
 	$scope.dataLookup = {
-		citiesIndex: {},
-		cities: [], 
-		population: {},
-		languagesPerLocation: {},
-		naitonalitiesPerLocation: {}
+		citiesIndex: {}, // CitisIndex used for retrieving city by ID
+		cities: [], // Cities array from srv.data
+		population: {}, // Population object from srv.data
+		languagesPerLocation: {}, // languagesPerLocation array from srv.data
+		naitonalitiesPerLocation: {} // nationalitiesPerLocation array from srv.data
 	}
 	
 	// References to workgroup models for use in views and other scripts
@@ -26,10 +28,12 @@ app.controller('main', ['$scope', '$http', 'meta', 'srv', 'workgroup', '$window'
 	}
 	
 	// Retrieve data and assign to factory variable
+	// This is asynchronous, but does not matter since application can load/function with no data in scope
 	$http.get('data.json')
 		.success(function(data, status, headers, config) {
 			srv.data = data;
 			// Create data lookups here
+			// Populate citiesIndex
 			for (var i = 0, len = srv.data.cities.length; i< len; i++) {
 				$scope.dataLookup.citiesIndex[srv.data.cities[i].id] = srv.data.cities[i];
 			}
@@ -67,7 +71,6 @@ app.controller('main', ['$scope', '$http', 'meta', 'srv', 'workgroup', '$window'
 			for (var i = 0, len = workgroup.groupsActive.groups.length; i < len; i++) {
 				domain.push(workgroup.groupsActive.groups[i].id);
 			}
-			//console.log(domain);
 			return domain;
 		}
 	}
@@ -79,7 +82,7 @@ app.controller('main', ['$scope', '$http', 'meta', 'srv', 'workgroup', '$window'
 	srv.colorScale.range(["#96B566", "#C3C3C3", "#BCE27F", "#7C7C7C", "#F6FF97"]);
 	// We set the domain here, although it will be empty at this point
 	// Domain is reset every time the chart is rendered and the graph is updated
-	// We use graphingTools.colorScaleDomain ro define scales dynamically based on groupsActive
+	// We use graphingTools.colorScaleDomain to define scales dynamically based on groupsActive
 	srv.colorScale.domain($scope.graphingTools.colorScaleDomain);
 	// ---------------------
 
@@ -97,7 +100,7 @@ app.controller('main', ['$scope', '$http', 'meta', 'srv', 'workgroup', '$window'
 	
 	// Bind RESIZE event to the $window element
 	// See https://docs.angularjs.org/api/ng/service/$window
-	// On resize, apply changes to the graph svg, voronoi, force, and chart.
+	// On resize, apply changes to the graph svg, voronoi (if voronoi), force, and chart.
 	var resizeChart = true;
 	angular.element($window).bind('resize', function () {
 		
@@ -110,13 +113,9 @@ app.controller('main', ['$scope', '$http', 'meta', 'srv', 'workgroup', '$window'
 		srv.forceGraph.force.size([width, srv.forceGraph.height]).resume();
 		
 		// ChartGraph Resize
-		//srv.statChart
 		srv.statChart = new BarChart($scope.graphingTools.chartWidth(), 300, "#statsChart");//500
 		$scope.renderChart();
 	});
-	
-	
-	
 	
 	
 	// Callback to render the chart upon model changes
@@ -161,15 +160,20 @@ app.controller('main', ['$scope', '$http', 'meta', 'srv', 'workgroup', '$window'
 		}
 	}
 	
-	
+	// Variable to hold the ID of the city's group when selected
 	$scope.statsGroupSelected = null;
 	
+	// When a node is clicked we need the group languages and nationalities to be computed dynamically
+	// to reflect any changes in node grouping/adding/removal etc.
 	$scope.statsGroupClicked = function(id) {
 		$scope.statsGroupSelected = workgroup.groupsActive.find(id);
 		$scope.setGroupLanguages();
 		$scope.setGroupNationalities();
 	}
 	
+	// Variable to hold the group languages aggregated via "setGroupLanguages"
+	// Best be moved to a convenient object
+	// Format: array of objects: {name: "language name", value: 0}
 	$scope.groupLanguages = [];
 	
 	$scope.setGroupLanguages = function() {
@@ -204,6 +208,9 @@ app.controller('main', ['$scope', '$http', 'meta', 'srv', 'workgroup', '$window'
 		return true;
 	}
 	
+	// Variable to hold the group nationalities aggregated via "setGroupNationalities"
+	// Best be moved to a convenient object
+	// Format: array of objects: {name: "nationality name", value: 0}
 	$scope.groupNationalities = [];
 	
 	$scope.setGroupNationalities = function() {
