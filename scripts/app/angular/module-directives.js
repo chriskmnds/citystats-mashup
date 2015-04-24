@@ -1,4 +1,5 @@
 angular.module('app.init', [])
+	// Global metadata that may be referenced later
 	.value('meta', {
 		name: '',
 		setName: function(name) {
@@ -14,7 +15,7 @@ angular.module('app.init', [])
 		}
 	});
 
-
+// A custom filter for capitalising the first letter of each word in a sequence
 angular.module('CustomFilter', []).
   filter('capitalize', function() {
     return function(input, all) {
@@ -31,6 +32,7 @@ var app = angular.module('app.main', ['app.init', 'CustomFilter', 'ngAnimate'])
 		meta.setDescription('Open data visualisation built in Angular and D3.js. Explores 2011 statistics about xxx cities and villages in Cyprus. Allows grouping of cities/villages for deeper exploration and comparison. Data sourced from the Cyprus Statistical Agency. Datasets used: xxx, xxx, and xxx.');
 	});
 
+// Template for displaying a list of cities to explore
 app.directive("utilsSelectWidget", function () {
 	return {
 		restrict: 'E',
@@ -39,6 +41,7 @@ app.directive("utilsSelectWidget", function () {
 	};
 });
 
+// Template for displaying utilites when a node is clicked
 app.directive("utilsNodeWidget", function () {
 	return {
 		restrict: 'E',
@@ -47,6 +50,7 @@ app.directive("utilsNodeWidget", function () {
 	};
 });
 
+// Template for the main stats table
 app.directive("statsDetailsWidget", function () {
 	return {
 		restrict: 'E',
