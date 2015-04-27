@@ -8,10 +8,10 @@ City Stats mashup is an Open Data visualisation, a stand-alone client applicatio
 
 The project is currently under development, needs code clean-up and extensions, but it is in fully working condition. To try out a demo simply clone the repository, place in your web server, and open index.html in any modern browser. A dummy dataset (data.json) is used for testing and demonstrating purposes. See screenshots below for what to expect in a live deployment.
 
-The application uses the following custom modules for chart and graph rendering:
+The following modules have been extracted for stand-alone chart and graph rendering:
 
-- [Dynamic grouped bar chart implementation](https://github.com/chriskmnds/d3-dynamic-grouped-bar-chart)
-- [Force layout API](https://github.com/chriskmnds/d3-force-layout-api)
+- [D3 dynamic grouped bar chart](https://github.com/chriskmnds/d3-dynamic-grouped-bar-chart)
+- [D3 force layout API](https://github.com/chriskmnds/d3-force-layout-api)
 
 ### Screenshots
 
