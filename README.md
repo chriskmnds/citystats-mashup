@@ -2,7 +2,7 @@
 
 Project URL: (to be available soon)
 
-# About
+## About
 
 City Stats mashup is an Open Data visualisation, a stand-alone client application, built in [Angular](https://angularjs.org/) and [D3.js](http://d3js.org/) intended for exploring statistical data. The current implementation explores statistics about cities and villages in [Cyprus](http://en.wikipedia.org/wiki/Cyprus). These can be grouped together via the graphical interface for aggregated results, hence deeper exploration and comparison.
 
@@ -13,7 +13,7 @@ The following modules have been extracted for stand-alone chart and graph render
 - [D3 dynamic grouped bar chart](https://github.com/chriskmnds/d3-dynamic-grouped-bar-chart)
 - [D3 force layout API](https://github.com/chriskmnds/d3-force-layout-api)
 
-# Screenshots
+## Screenshots
 
 Adding and grouping nodes/cities:
 
@@ -25,6 +25,6 @@ Start-up state of the application:
 
 Background map image from Google Maps.
 
-# License
+## License
 
 MIT
