@@ -24,3 +24,7 @@ Start-up state of the application:
 ![alt tag](./img/05.55.47.png)
 
 Background map image from Google Maps.
+
+# License
+
+MIT
