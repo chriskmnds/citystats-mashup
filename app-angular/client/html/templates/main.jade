@@ -1,0 +1,29 @@
+section(ng-controller="GraphCtrl as graphVm")
+  aside#utils
+    div.select#circle(ng-click="graphVm.utilsClicked()") +
+    div.popup
+      div(ng-hide="graphVm.tooltipTools.init")
+        div#toolsSelect.alpha60(ng-show="graphVm.tooltipTools.utils && graphVm.tooltipTools.timesOpened % 2 != 0")
+          utils-select-widget
+        div#toolsNode.alpha60(ng-show="graphVm.tooltipTools.node")
+          utils-node-widget
+      div#toolsInit(ng-show="graphVm.tooltipTools.init" ng-init="graphVm.loadInit()")
+        div Click to add, group, and explore cities
+  section
+    div#forceGraph
+  div.clear
+
+section#stats(ng-controller="StatsCtrl as statsVm" ng-show="statsVm.displayTools.showStats" ng-init="statsVm.statsLoadInit()")
+  section.statsElement.left
+    div#statsDetails
+      stats-details-widget
+  section.statsElement.right
+    div#statsChart
+    div
+      div#statsChartLabel(ng-show="statsVm.displayTools.showStatsChartLabel")
+        span(ng-repeat="entity in mainVm.modelLookup.groupsActive.find(statsVm.chartSelection.groupID).entities") {{mainVm.dataLookup.citiesIndex[entity.id].name | capitalize:true}} 
+        span {{statsVm.chartSelection.value | number:0}}
+  div.clear
+  
+  | <!-- FOOTER -->
+  | <!-- Place footer here to fade in with stats on pageload -->		

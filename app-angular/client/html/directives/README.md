@@ -1,0 +1,1 @@
+Jade content for directives

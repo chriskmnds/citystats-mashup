@@ -1,0 +1,72 @@
+div
+  div(ng-switch="mainVm.modelLookup.groupsActive.groups.length")
+    div.statsTable.empty(ng-switch-when="0")
+      div.column.first
+        div.tHead
+          span.glyphicon.glyphicon-stats
+          span &nbsp;
+        div.pad
+      div.column.second
+        div.tHead
+          span.tHeadSymbol
+          span.tHeadTitle Languages
+        div.pad
+      div.column.third
+        div.tHead
+          span.tHeadSymbol
+          span.tHeadTitle Nationalities
+        div.pad
+      div.clear
+    
+    div.statsTable.full(ng-switch-default)
+      div.column.first
+        div.tHead
+          span.glyphicon.glyphicon-stats
+          span &nbsp;
+        div.pad
+        div.tBody
+          ul.group.animate(ng-repeat="group in mainVm.modelLookup.groupsActive.groups track by $index")
+            li(ng-click="mainVm.statsGroupClicked(group.id)")
+              div.selected(ng-if="group.id === mainVm.srvLookup.statsGroupSelected().id")
+                span.glyphicon.glyphicon-play.entitySymbol
+                span(ng-repeat="entity in group.entities" style="float:left")
+                  span(ng-if="$first") {{mainVm.dataLookup.citiesIndex[entity.id].name}}
+                  span(ng-if="$middle") , {{mainVm.dataLookup.citiesIndex[entity.id].name}}
+                  span(ng-if="$last && $index > 0") , {{mainVm.dataLookup.citiesIndex[entity.id].name}}
+                div(style="clear:left;")
+              div(ng-if="group.id !== mainVm.srvLookup.statsGroupSelected().id")
+                span(ng-repeat="entity in group.entities" style="float:left")
+                  span(ng-if="$first") {{mainVm.dataLookup.citiesIndex[entity.id].name}}
+                  span(ng-if="$middle") , {{mainVm.dataLookup.citiesIndex[entity.id].name}}
+                  span(ng-if="$last && $index > 0") , {{mainVm.dataLookup.citiesIndex[entity.id].name}}
+                div(style="clear:left;")
+        div.pad.extra
+      
+      div.column.second
+        div.tHead
+          span.tHeadSymbol
+          span.tHeadTitle Languages
+          span.sortSymbol.glyphicon.glyphicon-triangle-bottom 
+        div.pad
+        div.tBody
+          ul(ng-if="mainVm.modelLookup.groupsActive.find(mainVm.srvLookup.statsGroupSelected().id) !== null")
+            li(ng-repeat="language in mainVm.srvLookup.groupLanguages()")
+              div.language
+                div.name {{language.name | capitalize:true}}
+                div.value {{language.value | number:0}}
+      
+      div.column.third
+        div.tHead
+          span.tHeadSymbol
+          span.tHeadTitle Nationalities
+          span.sortSymbol.glyphicon.glyphicon-triangle-bottom 
+        div.pad
+        div.tBody
+          ul(ng-if="mainVm.modelLookup.groupsActive.find(mainVm.srvLookup.statsGroupSelected().id) !== null")
+            li(ng-repeat="nationality in mainVm.srvLookup.groupNationalities()")
+              div.nationality
+                div.name {{nationality.name | capitalize:true}}
+                div.value {{nationality.value | number:0}}
+      
+      div.clear
+

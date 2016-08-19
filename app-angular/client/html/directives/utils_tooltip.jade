@@ -1,0 +1,5 @@
+aside
+	div.clear.head Places to explore
+	div.select(ng-repeat="item in mainVm.dataLookup.cities" ng-click='graphVm.addNode(item.id)')
+		span 
+		span {{item.name}}

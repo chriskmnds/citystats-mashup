@@ -1,0 +1,26 @@
+extends layouts/basic
+
+append title
+  title(ng-bind="pageTitle")
+
+append content
+  div(ng-hide="doingResolve") This is index.jade
+  section#wrapper
+    section#container
+      header#header
+        div.title(style="text-align:right; line-height:0.8em") {{pageTitle}}
+        div.credits
+          span info
+          span.glyphicon.glyphicon-triangle-bottom 
+      div(ui-view)
+    footer#footer
+      div.top
+        div.logo(style="margin-right:7px")
+          span
+            a(href="http://d3js.org") D3.js
+        div.logo
+          span
+            a(href="https://angularjs.org") Angular.js
+      div.bottom
+        span Data Source: #[a(href="http://www.mof.gov.cy/cystat") Cyprus Statistical Agency]. Developer: Christos Koumenides
+      

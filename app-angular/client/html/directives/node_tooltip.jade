@@ -1,0 +1,70 @@
+aside
+  
+  | <!-- Always shown: -->
+  div.head {{mainVm.dataLookup.citiesIndex[graphVm.entitySelected.id].name}}
+  div.element Population: {{mainVm.dataLookup.population[graphVm.entitySelected.id] | number:0}}
+  
+  | <!-- Include/Exclude from Stats: -->
+  
+  div(ng-switch="graphVm.getActiveGroup(graphVm.entitySelected.group.id)")
+    div(ng-switch-when="null") 
+      div.select.element(ng-click='graphVm.activateEntity(graphVm.entitySelected.id)')
+        span.glyphicon.glyphicon-plus &nbsp;
+        span Include in Stats
+    div(ng-switch-default) 
+      div.select.element(ng-if="graphVm.entitySelected.group.entities.length === 1" ng-click='graphVm.deactivateEntity(graphVm.entitySelected.id)')
+        span.glyphicon.glyphicon-ok &nbsp;
+        span Included in Stats
+      div.element(ng-if='graphVm.entitySelected.group.entities.length > 1')
+        span.glyphicon.glyphicon-ok &nbsp;
+        span Included in Stats
+  
+  | <!-- Group with... -->
+  
+  div.element.bold(ng-if="graphVm.entitySelected.group.entities.length > 1") Grouped with 
+    span(ng-repeat='entity in graphVm.entitySelected.group.entities | filter: graphVm.differentIDs') {{mainVm.dataLookup.citiesIndex[entity.id].name}}&nbsp;
+  
+  div(ng-switch="mainVm.modelLookup.groupsActive.groups.length")
+    
+    div(ng-switch-when='0')
+    
+    div(ng-switch-when='1')
+      div(ng-if='mainVm.modelLookup.groupsActive.find(graphVm.entitySelected.group.id) === null')
+        div.element Group with
+        div.select.element.entity(ng-repeat='group in mainVm.modelLookup.groupsActive.groups | filter: graphVm.filterGroups' ng-click='graphVm.groupWithActiveEntity(graphVm.entitySelected.id, group.entities[0].id)')
+          | <!-- Group {{group.id}} -->
+          div
+            span(ng-repeat='entity in group.entities') {{mainVm.dataLookup.citiesIndex[entity.id].name}} 
+    
+    div(ng-switch-default)
+      div(ng-switch='graphVm.entitySelected.group.entities.length')
+        div(ng-switch-when='1')
+          div.element Group with
+          div.select.element.entity(ng-repeat='group in mainVm.modelLookup.groupsActive.groups | filter: graphVm.filterGroups' ng-click='graphVm.groupWithActiveEntity(graphVm.entitySelected.id, group.entities[0].id)')
+            | <!-- Group {{group.id}} -->
+            div
+              span(ng-repeat='entity in group.entities') {{mainVm.dataLookup.citiesIndex[entity.id].name}} 
+    
+        div(ng-switch-default)
+          div(ng-if='!graphVm.entitySelected.groupOwner')
+            div.element Group with
+            div.select.element.entity(ng-repeat='group in mainVm.modelLookup.groupsActive.groups | filter: graphVm.filterGroups' ng-click='graphVm.groupWithActiveEntity(graphVm.entitySelected.id, group.entities[0].id)')
+              | <!-- Group {{group.id}} -->
+              div
+                span(ng-repeat='entity in group.entities') {{mainVm.dataLookup.citiesIndex[entity.id].name}} 
+  
+  | <!-- Shown only if not group owner: -->
+  
+  div(ng-if='!graphVm.entitySelected.groupOwner')
+    div.select.element.remove(ng-click='graphVm.removeFromGroup(graphVm.entitySelected.group.id, graphVm.entitySelected.id, false)')
+      span
+      span Remove from group
+    div.select.element.remove(ng-click='graphVm.removeFromGroup(graphVm.entitySelected.group.id, graphVm.entitySelected.id, true)')
+      span
+      span Remove from group and Activate
+  
+  | <!-- Remove Node: -->
+  
+  div.select.element.remove(ng-if="!(graphVm.entitySelected.groupOwner && graphVm.entitySelected.group.entities.length > 1)" ng-click='graphVm.removeEntity(graphVm.entitySelected.id)')
+    span.glyphicon.glyphicon-remove.delete &nbsp;
+    span Remove Node

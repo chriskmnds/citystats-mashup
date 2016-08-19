@@ -2,16 +2,11 @@
 
 ## About
 
-City Stats mashup is a stand-alone Open Data visualisation built in [Angular](https://angularjs.org/) and [D3.js](http://d3js.org/) intended for exploring statistical/demographic data about cities and villages. These can be grouped together via the graphical interface for aggregated results, hence deeper exploration and comparison. An online deployment exploring cities and villages in Cyprus will be available soon.
+City Stats mashup is a stand-alone Open Data visualisation built in [Angular](https://angularjs.org/) and [D3.js](http://d3js.org/) intended for exploring statistical/demographic data about cities and villages. These can be grouped together via the graphical interface for aggregated results, hence deeper exploration and comparison. 
 
-The project is under development, needs code clean-up and extensions, but it is in fully working condition. To **try out a demo** simply clone the repository, place in your web server, and open `dev/client/index.html` in any modern browser. A dummy dataset (dev/client/data.json) is used for testing and demonstrating purposes. See screenshots below for what to expect in a live deployment.
+The project is under development, but it is in fully working condition. An online deployment exploring cities and villages in Cyprus will be available soon. See screenshots below for what to expect in a live deployment using a dummy dataset. Follow the steps next to clone the repo and run the demo locally.
 
-The following modules have been extracted for stand-alone dynamic chart and force-layout implementations:
-
-- [D3 Dynamic Grouped Bar Chart](https://github.com/chriskmnds/d3-dynamic-grouped-bar-chart)
-- [D3 Force Layout API](https://github.com/chriskmnds/d3-force-layout-api)
-
-## Screenshots
+### Screenshots
 
 Adding and grouping nodes/cities:
 
@@ -22,6 +17,39 @@ Start-up state of the application:
 ![alt tag](./img/05.55.47.png)
 
 Background map image from Google Maps.
+
+## Install & Run Locally
+
+The project uses the MEAN project structure/configuration available [here](https://github.com/chriskmnds/mean-clean-2). All development scripts are provided in this repo. To load the demo locally, simply clone the repository and follow these steps:
+
+### Prerequisites
+
+1. Install Node.js and npm (http://nodejs.org/).
+2. Install bower and gulp:
+	
+	`npm install -g bower`
+
+	`npm install -g gulp`
+
+### Install/Run
+
+1. Change directory to `app-angular`
+2. Install required npm and bower packages:
+
+	`npm install`
+
+3. If all successful, start the server:
+
+	`npm start`
+
+This should start the application (`http://localhost:8000`) in a new browser window. Build option is set to production (read [here](https://github.com/chriskmnds/mean-clean-2) for further details). You should be able to interact with app right away.
+
+## Development Notes
+
+The following D3 custom modules are used for the dynamic chart and force-layout implementations:
+
+- [D3 Dynamic Grouped Bar Chart](https://github.com/chriskmnds/d3-dynamic-grouped-bar-chart)
+- [D3 Force Layout API](https://github.com/chriskmnds/d3-force-layout-api)
 
 ## License
 
