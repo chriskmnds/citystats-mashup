@@ -252,7 +252,7 @@ gulp.task('clean:prod', function() {
     .pipe(vinylPaths(del));
 });
 
-gulp.task('default', ['build:dev']);
+gulp.task('default', ['build:prod']);
 
 gulp.task('server', function() {
   return gulp.src('./public')
