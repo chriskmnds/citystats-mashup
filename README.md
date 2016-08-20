@@ -12,8 +12,6 @@ Adding and grouping nodes/cities:
 
 ![alt tag](./img/05.55.17.png)
 
-Background map image from Google Maps.
-
 ## Install & Run Locally
 
 The project uses the MEAN project structure/configuration available [here](https://github.com/chriskmnds/mean-clean-2). All development scripts are provided in this repo. To load the demo locally, simply clone [citystats-mashup](https://github.com/chriskmnds/citystats-mashup.git) and follow these steps:
@@ -54,3 +52,5 @@ The following D3 custom modules are used for the dynamic chart and force-layout 
 ## License
 
 MIT
+
+Background map image from Google Maps.
