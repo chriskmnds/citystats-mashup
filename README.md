@@ -12,10 +12,6 @@ Adding and grouping nodes/cities:
 
 ![alt tag](./img/05.55.17.png)
 
-Start-up state of the application:
-
-![alt tag](./img/05.55.47.png)
-
 Background map image from Google Maps.
 
 ## Install & Run Locally
@@ -43,6 +39,10 @@ The project uses the MEAN project structure/configuration available [here](https
 	`npm start`
 
 This should start the application (`http://localhost:8000`) in a new browser window. Build option is set to production (read [here](https://github.com/chriskmnds/mean-clean-2) for further details). You should be able to interact with app right away.
+
+Start-up state of the application:
+
+![alt tag](./img/05.55.47.png)
 
 ## Development Notes
 
