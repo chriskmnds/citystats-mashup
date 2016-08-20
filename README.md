@@ -10,7 +10,7 @@ The project is under development, but it is in fully working condition. An onlin
 
 Adding and grouping nodes/cities:
 
-![alt tag](./img/05.55.17.png)
+![citystats-mashup-demo](./img/05.55.17.png)
 
 ## Install & Run Locally
 
@@ -40,7 +40,7 @@ This should start the application (`http://localhost:8000`) in a new browser win
 
 Start-up state of the application:
 
-![alt tag](./img/05.55.47.png)
+<img alt="citystats-mashup-init" src="./img/05.55.47.png" width="700px"/>
 
 ## Development Notes
 
