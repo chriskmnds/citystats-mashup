@@ -20,7 +20,7 @@ Background map image from Google Maps.
 
 ## Install & Run Locally
 
-The project uses the MEAN project structure/configuration available [here](https://github.com/chriskmnds/mean-clean-2). All development scripts are provided in this repo. To load the demo locally, simply clone the repository and follow these steps:
+The project uses the MEAN project structure/configuration available [here](https://github.com/chriskmnds/mean-clean-2). All development scripts are provided in this repo. To load the demo locally, simply clone [citystats-mashup](https://github.com/chriskmnds/citystats-mashup.git) and follow these steps:
 
 ### Prerequisites
 
