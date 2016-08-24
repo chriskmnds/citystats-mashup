@@ -111,7 +111,7 @@ gulp.task('make:copy:config', function() {
   //get and publish Config module
   var stream = source('_config.js');
   stream.end(config.configModule(pkg));
-  stream.pipe(gulp.dest(sources.dest + '/js/app'));
+  stream.pipe(gulp.dest(sources.dest + '/js/app/angular'));
 });
 
 gulp.task('copy:css', function() {
