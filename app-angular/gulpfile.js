@@ -189,6 +189,7 @@ gulp.task('inject:dev', function() {
   // Prioritise/order some of some files to be injected first
   var orderOfTheFiles = bowerfiles.css.concat(['main.css']);
   orderOfTheFiles = orderOfTheFiles.concat(bowerfiles.js);
+  orderOfTheFiles = orderOfTheFiles.concat(['public/' + pkg.version + '/js/app/other/utils.js']);
   orderOfTheFiles = orderOfTheFiles.concat(['_config.js']);
   orderOfTheFiles = orderOfTheFiles.concat(['_app.js']);
   orderOfTheFiles = getOrderOfTheFiles(orderOfTheFiles);//strip paths...
