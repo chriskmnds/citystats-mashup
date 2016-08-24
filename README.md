@@ -10,17 +10,11 @@ The project is under development, but it is in fully working condition. An onlin
 
 Adding and grouping nodes/cities:
 
-![alt tag](./img/05.55.17.png)
-
-Start-up state of the application:
-
-![alt tag](./img/05.55.47.png)
-
-Background map image from Google Maps.
+![citystats-mashup-demo](./img/05.55.17.png)
 
 ## Install & Run Locally
 
-The project uses the MEAN project structure/configuration available [here](https://github.com/chriskmnds/mean-clean-2). All development scripts are provided in this repo. To load the demo locally, simply clone the repository and follow these steps:
+The project uses the MEAN project structure/configuration available [here](https://github.com/chriskmnds/mean-clean-2). All development scripts are provided in this repo. To load the demo locally, simply clone [citystats-mashup](https://github.com/chriskmnds/citystats-mashup.git) and follow these steps:
 
 ### Prerequisites
 
@@ -44,6 +38,10 @@ The project uses the MEAN project structure/configuration available [here](https
 
 This should start the application (`http://localhost:8000`) in a new browser window. Build option is set to production (read [here](https://github.com/chriskmnds/mean-clean-2) for further details). You should be able to interact with app right away.
 
+Start-up state of the application:
+
+<img alt="citystats-mashup-init" src="./img/05.55.47.png" width="700px"/>
+
 ## Development Notes
 
 The following D3 custom modules are used for the dynamic chart and force-layout implementations:
@@ -54,3 +52,5 @@ The following D3 custom modules are used for the dynamic chart and force-layout 
 ## License
 
 MIT
+
+Background map image from Google Maps.
